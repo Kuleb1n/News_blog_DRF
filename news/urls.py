@@ -1,7 +1,11 @@
-from django.urls import path
-from .views import *
+from django.urls import path, include
+from rest_framework import routers
 
-urlpatterns = [path('api/v1/news', NewsAPIView.as_view()),
-               path('api/v1/news/<int:pk>/', NewsUpdateAPIView.as_view()),
-               path('api/v1/news-detail/<int:pk>/', NewsDetailAPIView.as_view()),
+from news.views import NewsViewSet
+
+router = routers.DefaultRouter()
+
+router.register(r'news', NewsViewSet, basename='news')
+
+urlpatterns = [path('api/v1/', include(router.urls)),
                ]
