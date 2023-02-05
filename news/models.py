@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class News(models.Model):
@@ -8,6 +9,7 @@ class News(models.Model):
     date_of_change = models.DateTimeField('Date_of_change', auto_now=True)
     is_published = models.BooleanField('Published', default=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
+    user = models.ForeignKey(User, verbose_name='User', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
