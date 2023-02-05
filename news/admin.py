@@ -3,11 +3,12 @@ from .models import News, Category
 
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category', 'content', 'date_of_publication', 'date_of_change', 'is_published']
+    list_display = ['id', 'title', 'category', 'content', 'date_of_publication', 'date_of_change', 'user',
+                    'is_published']
     list_display_links = ['id', 'title', 'category']
     list_filter = ['category', 'date_of_publication', 'date_of_change', 'is_published']
     search_fields = ('title', 'content')
-    readonly_fields = ('id', 'date_of_publication', 'date_of_change')
+    readonly_fields = ('id', 'date_of_publication', 'date_of_change', 'user')
 
 
 class CategoryAdmin(admin.ModelAdmin):
