@@ -3,6 +3,8 @@ from .models import News
 
 
 class NewsSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = News
         fields = "__all__"
