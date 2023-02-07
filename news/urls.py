@@ -8,4 +8,5 @@ router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet, basename='news')
 
 urlpatterns = [path('api/v1/', include(router.urls)),
+               path('api/v1/auth/', include('rest_framework.urls')),
                ]
